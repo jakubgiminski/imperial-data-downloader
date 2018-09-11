@@ -1,0 +1,15 @@
+{
+    "name": "jakub/bud-interview",
+    "authors": [
+        {
+            "name": "Jakub Giminski",
+            "email": "jakubgiminski@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ExcelenceApi\\": "src/"
+        }
+    },
+    "require": {}
+}
