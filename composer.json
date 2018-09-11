@@ -8,8 +8,16 @@
     ],
     "autoload": {
         "psr-4": {
-            "ExcelenceApi\\": "src/"
+            "ExcellenceApi\\": "src/"
         }
     },
-    "require": {}
+    "autoload-dev": {
+        "psr-4": {
+            "Test\\": "test/"
+        }
+    },
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^7.3"
+    }
 }

@@ -10,7 +10,7 @@ class Request
 
     private $body;
 
-    public function __construct(string $endpoint, array $headers, array $body)
+    public function __construct(string $endpoint, array $headers = [], array $body = [])
     {
         $this->endpoint = $endpoint;
         $this->headers = $headers;
