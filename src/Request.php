@@ -32,7 +32,7 @@ class Request
         return $this->body;
     }
 
-    public function getBodyParameter(string $parameterName): string
+    public function getBodyParameter(string $parameterName)
     {
         if (!$this->bodyContains($parameterName)) {
             throw new MissingParameterException($parameterName);
