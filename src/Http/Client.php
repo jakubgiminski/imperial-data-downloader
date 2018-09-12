@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace ExcellenceApi;
+namespace ExcellenceApi\Http;
 
 use ExcellenceApi\Authentication\Authentication;
 use ExcellenceApi\Authentication\Token;

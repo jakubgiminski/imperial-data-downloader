@@ -4,10 +4,10 @@ namespace Test;
 
 use ExcellenceApi\Authentication\Authentication;
 use ExcellenceApi\Authentication\AuthenticationException;
-use ExcellenceApi\Client;
-use ExcellenceApi\Request;
+use ExcellenceApi\Http\Client;
+use ExcellenceApi\Http\Request;
 use ExcellenceApi\Authentication\Token;
-use ExcellenceApi\UnknownEndpointException;
+use ExcellenceApi\Http\UnknownEndpointException;
 use PHPUnit\Framework\TestCase;
 
 class ClientTest extends TestCase
