@@ -2,7 +2,7 @@
 
 namespace ExcellenceApi\Http;
 
-class Response 
+class Response
 {
     private $body;
 
@@ -14,5 +14,19 @@ class Response
     public function getBody(): array
     {
         return $this->body;
+    }
+
+    public function getBodyParameter(string $parameterName)
+    {
+        if (!$this->bodyContains($parameterName)) {
+            throw new MissingParameterException($parameterName);
+        }
+
+        return $this->body[$parameterName];
+    }
+
+    public function bodyContains(string $parameterName): bool
+    {
+        return array_key_exists($parameterName, $this->body) && $this->body[$parameterName];
     }
 }
