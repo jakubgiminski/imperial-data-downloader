@@ -17,7 +17,7 @@ class ExecutePlan
         $this->translator = $translator;
     }
     
-    public function __invoke()
+    public function __invoke(): array
     {
         // Authenticate
         $request = new Request(

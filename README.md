@@ -1,7 +1,7 @@
 # bud-interview
 [Bud Interview Assignment](https://github.com/jakubgiminski/bud-interview/blob/master/TASK.md)
 
-### Installation
+### Install project
 ```
 composer install
 ```
@@ -12,6 +12,13 @@ vendor/bin/phpunit test --testdox
 ```
 
 ```php
+<?php declare(strict_types=1);
+
+namespace ExcellenceApi;
+
+use ExcellenceApi\Http\Client;
+use ExcellenceApi\Http\Request;
+
 class ExecutePlan 
 {
     private $apiClient;
@@ -24,7 +31,7 @@ class ExecutePlan
         $this->translator = $translator;
     }
     
-    public function __invoke()
+    public function __invoke(): array
     {
         // Authenticate
         $request = new Request(
@@ -57,4 +64,5 @@ class ExecutePlan
             'block' => $this->translator->translateBinary($leiaResponse->getBodyParameter('block')),
         ];
     }
+}
 ```
