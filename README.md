@@ -39,6 +39,15 @@ translated from binary to english.
 }
 ```
 
+### Serivce Api Documentation
+```php
+/**
+ * Connects to Excellence API, downloads prisoner location, 
+ * translates data from binary to english and returns as array.
+ */
+DownloadImperialData::__invoke(): array
+```
+
 ### Install project
 ```
 composer install
@@ -49,7 +58,3 @@ composer install
 vendor/bin/phpunit tests --colors --testdox
 ```
 
-### Api Documentation
-```php
-DownloadImperialData::__invoke(): array
-```
