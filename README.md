@@ -7,15 +7,6 @@ Service should fetch data from an imaginary Excellence Http API. Additionally, d
 translated from binary to english.
 
 
-## Service API documentation
-```php
-/**
- * Connects to Excellence API, downloads prisoner location, 
- * translates data from binary to english and returns as array.
- */
-DownloadImperialData::__invoke(): array
-```
-
 ## Excellence API documentation
 #### Authenticate user 
 ```js
@@ -48,6 +39,16 @@ DownloadImperialData::__invoke(): array
         "block": "01000100 01100101 01110100 01100101 01101110 01110100 01101001 01101111 01101110 00100000 01000010 01101100 01101111 01100011 01101011 00100000 01000001 01000001 00101101 00110010 00110011 00101100"
     }
 }
+```
+
+
+## Service API documentation
+```php
+/**
+ * Connects to Excellence API, downloads prisoner location, 
+ * translates data from binary to english and returns as array.
+ */
+DownloadImperialData::__invoke(): array
 ```
 
 
