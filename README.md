@@ -1,14 +1,14 @@
 # Imperial Data Downloader 
 
-### Objectives
+### Project Objectives
 Create a service that downloads information about the whereabouts of princess Leia's prison cell.
-Service should fetch data from an imaginary Excellence Http API.
+Service should fetch data from an imaginary Excellence Http API. Additionally, downloaded information should be 
+translated from binary to english.
 
 ### Excellence API Documentation
 #### Authenticate User 
 ```js
 {
-    
     url = "/authenticate",
     method = "POST",
     headers = [ 
@@ -19,10 +19,7 @@ Service should fetch data from an imaginary Excellence Http API.
         "password": "chewy"
     },
     returns = {
-        "access_token": "e31a726c4b90462ccb7619e1b51f3d0068bf8006",
-        "expires_in": 99999999999,
-        "token_type": "Bearer",
-        "scope": "TheForce"
+        "access_token": "e31a726c4b90462ccb7619e1b51f3d0068bf8006"
     }
 }
 ```
@@ -30,11 +27,10 @@ Service should fetch data from an imaginary Excellence Http API.
 #### Get Prisoner information
 ```js
 {
-    
-    url = "/prisoners/{id}",
+    url = "/prisoners/leia",
     method = "GET",
     headers = [ 
-        "Access-Token: {token}"
+        "Access-Token: e31a726c4b90462ccb7619e1b51f3d0068bf8006"
     ],
     returns = {
         "cell": "01000011 01100101 01101100 01101100 00100000 00110010 00110001 00111000 00110111",
@@ -42,7 +38,6 @@ Service should fetch data from an imaginary Excellence Http API.
     }
 }
 ```
-
 
 ### Install project
 ```
