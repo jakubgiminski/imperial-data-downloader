@@ -22,6 +22,14 @@ class Request
         return $this->endpoint;
     }
 
+    public function getHeader(string $key): string
+    {
+        if (!isset($this->headers[$key])) {
+            throw new \InvalidArgumentException($key);
+        }
+        return $this->headers[$key];
+    }
+
     public function getHeaders(): array
     {
         return $this->headers;

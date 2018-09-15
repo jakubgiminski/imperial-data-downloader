@@ -4,11 +4,15 @@ namespace ExcellenceApi\Authentication;
 
 class Token
 {
-    public const VALUE = 'e31a726c4b90462ccb7619e1b51f3d0068bf8006';
+    private $value;
 
-    public const EXPIRES_IN = 99999999999;
+    public function __construct(string $value)
+    {
+        $this->value = $value;
+    }
 
-    public const TYPE = 'Bearer';
-
-    public const SCOPE = 'TheForce';
+    public function __toString(): string
+    {
+        return $this->value;
+    }
 }

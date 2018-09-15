@@ -4,16 +4,16 @@ namespace ExcellenceApi\Authentication;
 
 class Authentication 
 {
-    public function validateCredentials(string $clientId, string $clientSecret): void
+    public function validateCredentials(string $username, string $password): void
     {
-        if ($clientId !== Credentials::CLIENT_ID || $clientSecret !== Credentials::CLIENT_SECRET) {
+        if ($username !== Credentials::USERNAME || $password !== Credentials::PASSWORD) {
             throw AuthenticationException::invalidCredentials();
         }
     }
-    
+
     public function validateToken(Token $token): void
     {
-        if (!$token::VALUE) {
+        if (!(string)$token) {
             throw AuthenticationException::missingToken();
         }
     }

@@ -21,27 +21,27 @@ class DownloadImperialData
     {
         // Authenticate
         $request = new Request(
-            '/token',
+            '/authenticate',
             [
                 'Content-Type' => 'application/x-www-form-urlencoded'
             ],
             [
-                'Client ID' => 'R2D2',
-                'Client Secret' => 'Alderan',
+                'username' => 'solo',
+                'password' => 'chewy',
             ]
         );
+
         $authResponse = $this->apiClient->post($request);
 
         // Get Leia's cell and block numbers
         $request = new Request(
-            '/prisoner/leia',
+            '/prisoners/leia',
             [
-                'Content-Type' => 'application/json'
-            ],
-            [
-                'token' => $authResponse->getBodyParameter('token'),
+                'Content-Type' => 'application/json',
+                'Access-Token' => (string) $authResponse->getBodyParameter('access_token'),
             ]
         );
+
         $leiaResponse = $this->apiClient->get($request);
 
         // Translate binary to english

@@ -35,13 +35,13 @@ class ClientTest extends TestCase
     public function testThrowsExceptionForInvalidCredentials(): void
     {
         $request = new Request(
-            '/token',
+            '/authenticate',
             [
                 'Content-Type' => 'application/x-www-form-urlencoded'
             ],
             [
-                'Client ID' => 'invalid id',
-                'Client Secret' => 'invalid secret',
+                'username' => 'invalid id',
+                'password' => 'invalid secret',
             ]
         );
 
@@ -52,30 +52,28 @@ class ClientTest extends TestCase
     public function testReturnsTokenForValidCredentials(): void
     {
         $request = new Request(
-            '/token',
+            '/authenticate',
             [
                 'Content-Type' => 'application/x-www-form-urlencoded'
             ],
             [
-                'Client ID' => Credentials::CLIENT_ID,
-                'Client Secret' => Credentials::CLIENT_SECRET,
+                'username' => Credentials::USERNAME,
+                'password' => Credentials::PASSWORD,
             ]
         );
 
         $response = $this->apiClient->post($request);
 
-        self::assertInstanceOf(Token::class, $response->getBodyParameter('token'));
+        self::assertInstanceOf(Token::class, $response->getBodyParameter('access_token'));
     }
     
     public function testReturnsLeiasCellAndBlock(): void
     {
         $request = new Request(
-            '/prisoner/leia',
+            '/prisoners/leia',
             [
-                'Content-Type' => 'application/json'
-            ],
-            [
-                'token' => new Token(),
+                'Content-Type' => 'application/json',
+                'Access-Token' => 'e31a726c4b90462ccb7619e1b51f3d0068bf8006',
             ]
         );
 

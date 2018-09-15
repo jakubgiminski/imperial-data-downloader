@@ -32,6 +32,7 @@ translated from binary to english.
     url = "/prisoners/leia",
     method = "GET",
     headers = [ 
+        "Content-Type: application/json",
         "Access-Token: e31a726c4b90462ccb7619e1b51f3d0068bf8006"
     ],
     returns = {

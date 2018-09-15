@@ -4,7 +4,7 @@ namespace ExcellenceApi\Authentication;
 
 class Credentials
 {
-    public const CLIENT_ID = 'R2D2';
+    public const USERNAME = 'solo';
 
-    public const CLIENT_SECRET = 'Alderan';
+    public const PASSWORD = 'chewy';
 }

@@ -7,8 +7,6 @@ use ExcellenceApi\Authentication\Token;
 
 class Client
 {
-    private const URL = 'https://death.star.api/';
-
     private $authentication;
 
     public function __construct(Authentication $authentication)
@@ -18,12 +16,12 @@ class Client
 
     public function get(Request $request): Response
     {
-        if ($request->getEndpoint() !== '/prisoner/leia') {
+        if ($request->getEndpoint() !== '/prisoners/leia') {
             throw new UnknownEndpointException($request->getEndpoint());
         }
 
         $this->authentication->validateToken(
-            $request->getBodyParameter('token')
+            new Token($request->getHeader('Access-Token'))
         );
 
         return new Response([
@@ -34,15 +32,15 @@ class Client
 
     public function post(Request $request): Response
     {
-        if ($request->getEndpoint() !== '/token') {
+        if ($request->getEndpoint() !== '/authenticate') {
             throw new UnknownEndpointException($request->getEndpoint());
         }
 
         $this->authentication->validateCredentials(
-            $request->getBodyParameter('Client ID'),
-            $request->getBodyParameter('Client Secret')
+            $request->getBodyParameter('username'),
+            $request->getBodyParameter('password')
         );
 
-        return new Response(['token' => new Token()]);
+        return new Response(['access_token' => new Token('e31a726c4b90462ccb7619e1b51f3d0068bf8006')]);
     }
 }
