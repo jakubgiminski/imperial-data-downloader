@@ -1,11 +1,11 @@
 # Imperial Data Downloader 
 
-### Project Objectives
+## Project Objectives
 Create a service that downloads information about the whereabouts of princess Leia's prison cell.
 Service should fetch data from an imaginary Excellence Http API. Additionally, downloaded information should be 
 translated from binary to english.
 
-### Excellence API Documentation
+## Excellence API Documentation
 #### Authenticate User 
 ```js
 {
@@ -39,7 +39,7 @@ translated from binary to english.
 }
 ```
 
-### Serivce Api Documentation
+## Serivce Api Documentation
 ```php
 /**
  * Connects to Excellence API, downloads prisoner location, 
@@ -48,13 +48,25 @@ translated from binary to english.
 DownloadImperialData::__invoke(): array
 ```
 
-### Install project
+## Install project
 ```
 composer install
 ```
 
-### Execute tests
+## Execute tests
 ```
 vendor/bin/phpunit tests --colors --testdox
 ```
+Client
+ ✔ Throws exception for unknown endpoint on get
+ ✔ Throws exception for unknown endpoint on post
+ ✔ Throws exception for invalid credentials
+ ✔ Returns token for valid credentials
+ ✔ Returns leias cell and block
+
+DownloadImperialData
+ ✔ Downloads and translates data
+
+Translator
+ ✔ Translates binary
 
