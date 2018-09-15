@@ -5,7 +5,7 @@ namespace ExcellenceApi;
 use ExcellenceApi\Http\Client;
 use ExcellenceApi\Http\Request;
 
-class ExecutePlan 
+class DownloadImperialData
 {
     private $apiClient;
     
