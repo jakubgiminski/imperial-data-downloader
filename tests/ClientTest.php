@@ -1,9 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Test;
+namespace Tests;
 
 use ExcellenceApi\Authentication\Authentication;
 use ExcellenceApi\Authentication\AuthenticationException;
+use ExcellenceApi\Authentication\Credentials;
 use ExcellenceApi\Http\Client;
 use ExcellenceApi\Http\Request;
 use ExcellenceApi\Authentication\Token;
@@ -12,23 +13,23 @@ use PHPUnit\Framework\TestCase;
 
 class ClientTest extends TestCase
 {
-    private $client;
+    private $apiClient;
 
     public function setUp(): void
     {
-        $this->client = new Client(new Authentication());
+        $this->apiClient = new Client(new Authentication());
     }
 
     public function testThrowsExceptionForUnknownEndpointOnGet(): void
     {
         $this->expectException(UnknownEndpointException::class);
-        $this->client->get(new Request('/unknown/endpoint'));
+        $this->apiClient->get(new Request('/unknown/endpoint'));
     }
 
     public function testThrowsExceptionForUnknownEndpointOnPost(): void
     {
         $this->expectException(UnknownEndpointException::class);
-        $this->client->post(new Request('/unknown/endpoint'));
+        $this->apiClient->post(new Request('/unknown/endpoint'));
     }
 
     public function testThrowsExceptionForInvalidCredentials(): void
@@ -45,7 +46,7 @@ class ClientTest extends TestCase
         );
 
         $this->expectException(AuthenticationException::class);
-        $this->client->post($request);
+        $this->apiClient->post($request);
     }
 
     public function testReturnsTokenForValidCredentials(): void
@@ -56,14 +57,14 @@ class ClientTest extends TestCase
                 'Content-Type' => 'application/x-www-form-urlencoded'
             ],
             [
-                'Client ID' => 'R2D2',
-                'Client Secret' => 'Alderan',
+                'Client ID' => Credentials::CLIENT_ID,
+                'Client Secret' => Credentials::CLIENT_SECRET,
             ]
         );
 
-        $response = $this->client->post($request);
+        $response = $this->apiClient->post($request);
 
-        self::assertInstanceOf(Token::class, $response->getBody()['token']);
+        self::assertInstanceOf(Token::class, $response->getBodyParameter('token'));
     }
     
     public function testReturnsLeiasCellAndBlock(): void
@@ -78,7 +79,7 @@ class ClientTest extends TestCase
             ]
         );
 
-        $responseBody = $this->client->get($request)->getBody();
+        $responseBody = $this->apiClient->get($request)->getBody();
 
         self::assertArrayHasKey('cell', $responseBody);
         self::assertArrayHasKey('block', $responseBody);

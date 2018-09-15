@@ -1,5 +1,5 @@
 {
-    "name": "jakub/bud-interview",
+    "name": "jakubgiminski/imperial-data-downloader",
     "authors": [
         {
             "name": "Jakub Giminski",
@@ -13,7 +13,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Test\\": "test/"
+            "Tests\\": "tests/"
         }
     },
     "require": {},

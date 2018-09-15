@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Test;
+namespace Tests;
 
 use ExcellenceApi\Authentication\Authentication;
 use ExcellenceApi\ExecutePlan;
